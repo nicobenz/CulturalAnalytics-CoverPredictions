@@ -1,54 +1,35 @@
 import json
-from icecream import ic
-import os
 from tqdm import tqdm
-
-def read_chunked_file(path, num_artists=0, chunk_size=4096):
-    filesize = os.path.getsize(path)
-    num_chunks = filesize // chunk_size
-    artists = []
-    collector = ""
-    count = 1
-    with open(path, 'r') as f:
-        while True:
-            print(f"\rLoop Progress: {count:08d}/{num_chunks}", end="")
-            count += 1
-            chunk = f.read(chunk_size)
-            if not chunk:
-                break  # end of file
-            collector += chunk
-            # find json objects in chunk
-            json_objects = collector.split('\n')
-            for json_obj in json_objects[:-1]:
-                try:
-                    artist_data = json.loads(json_obj)
-                    artists.append(artist_data)
-                    if 0 < num_artists == len(artists):
-                        return artists  # return when specified number of artists reached
-                except json.JSONDecodeError:
-                    # continue if json object incomplete
-                    pass
-            # save incomplete json object for next iteration
-            collector = json_objects[-1]
-
-    return artists  # will not stop till end of file when num_artists == 0
+import time
 
 
-db = "release"
-file_path = f'/Volumes/Data/covers/mb_db/{db}/mbdump/{db}'
-num_of_artists = 0
+def collect_by_release(line):
+    item = json.loads(line)
+    if len(item.get("artist-credit", [])) == 1:
+        artist_dict = item["artist-credit"][0]["artist"]
+        release_data = {
+            "artist-id": artist_dict.get("id", None),
+            "release-id": item.get("id", None),
+            "release-title": item.get("title", None),
+            "release-status": item.get("status", None),
+            "release-group-id": item.get("release-group", {}).get("id", None),
+            "release-group-date": item.get("release-group", {}).get("first-release-date", None),
+            "front-cover-available": item.get("cover-art-archive", {}).get("front", False)
+        }
+        return release_data
+    return False
 
-items = read_chunked_file(file_path, num_artists=num_of_artists)
-print("")
-artist_collection = {}
-for idx, item in enumerate(items):
+
+def collect_by_artist(line):
+    """
+    item = json.loads(line)
     release_data = {
-        "release-id": item["id"],
-        "release-title": item["title"],
-        "release-status": item["status"],
-        "release-group-id": item["release-group"]["id"],
-        "release-group-date": item["release-group"]["first-release-date"],
-        "front-cover-available": item["cover-art-archive"]["front"]
+        "release-id": item.get("id", None),
+        "release-title": item.get("title", None),
+        "release-status": item.get("status", None),
+        "release-group-id": item.get("release-group", {}).get("id", None),
+        "release-group-date": item.get("release-group", {}).get("first-release-date", None),
+        "front-cover-available": item.get("cover-art-archive", {}).get("front", False)
     }
     if item["artist-credit"]:
         if len(item["artist-credit"]) > 1:
@@ -58,22 +39,53 @@ for idx, item in enumerate(items):
             artist_dict = item["artist-credit"][0]["artist"]
             if artist_dict["id"] not in artist_collection:
                 artist_data = {
-                    "id": artist_dict["id"],
-                    "name": artist_dict["name"],
-                    "sort-name": artist_dict["sort-name"],
+                    "id": artist_dict.get("id", None),
+                    "name": artist_dict.get("name", None),
+                    "sort-name": artist_dict.get("sort-name", None),
                     "genres": [],
                     "releases": []
                 }
                 if artist_dict["genres"]:
                     for genre in artist_dict["genres"]:
                         genre_data = {
-                            "genre-id": genre["id"],
-                            "genre-name": genre["name"],
-                            "genre-count": genre["count"]
+                            "genre-id": genre.get("id", None),
+                            "genre-name": genre.get("name", None),
+                            "genre-count": genre.get("count", 0)
                         }
                         artist_data["genres"].append(genre_data)
-                artist_collection[artist_dict["id"]] = artist_data
-            artist_collection[artist_dict["id"]]["releases"].append(release_data)
+        return artist_data
+"""
 
-with open("data/covers/artists.json", "w", encoding="utf-8") as f:
-    json.dump(artist_collection, f)
+
+def query_json_file():
+    start_time = time.time()
+
+    db = "release"
+    file_path = f'/Volumes/Data/covers/mb_db/{db}/mbdump/{db}'
+    num_of_artists = 0
+
+    json_length = 3714201  # value calculated by just incrementing a counter once
+    data_collection = []
+    with open(file_path, "r") as f:
+        for line in tqdm(f, total=json_length):
+            data = collect_by_release(line)
+            if data:
+                data_collection.append(data)
+
+    with open("data/covers/releases.json", "w", encoding="utf-8") as f:
+        for data in data_collection:
+            json_data = json.dumps(data, ensure_ascii=False)
+            f.write(json_data)
+            f.write('\n')
+
+    end_time = time.time()
+    execution_time = end_time - start_time
+
+    hours = int(execution_time // 3600)
+    minutes = int((execution_time % 3600) // 60)
+    seconds = int(execution_time % 60)
+
+    print(f"Finished after: {hours:02}:{minutes:02}:{seconds:02}")
+
+
+query_json_file()
