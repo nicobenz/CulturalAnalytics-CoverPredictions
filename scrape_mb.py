@@ -23,10 +23,10 @@ def save_cover_ids():
             f.write("\n")
 
 
-def get_covers(release_id_path, clear_log=False):
+def get_covers(release_id_path:  str, clear_log=False):
     """
     iterates over all cover ids to save cover through coverarchive api
-    :param release_id_path: part to file with release ids
+    :param release_id_path: path to file with release ids
     :param clear_log: overwrites log on start
     :return:
     """
@@ -105,12 +105,13 @@ def get_covers(release_id_path, clear_log=False):
                                                 f.write(response.content)
                                             # leave loop after first found cover has been saved
                                             break
-                                    except requests.exceptions.Timeout:
+                                    except requests.exceptions.Timeout as timeout:
+                                        logging.error(f"Error {timeout}. Trying again in two minutes.")
                                         time.sleep(120)  # zzzZZZzzz for 2 min if request timed out
-                                    except requests.exceptions.HTTPError:
-                                        pass  # repeat request immediately
-                                    except requests.exceptions.RequestException:
-                                        pass  # repeat request immediately
+                                    except requests.exceptions.HTTPError as httperror:
+                                        logging.error(f"Error {httperror}. Trying again now.")
+                                    except requests.exceptions.RequestException as reqex:
+                                        logging.error(f"Error {reqex}. Trying again now.")
                             else:
                                 # if no cover could be found, put release id on blacklist to skip on next startup
                                 with open("temp/black_list.txt", "a") as f:
