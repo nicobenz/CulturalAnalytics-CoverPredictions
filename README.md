@@ -25,4 +25,4 @@ tba
 - [ ] repeat
 - [ ] ???
 - [ ] profit
-- [ ] visualise distance between subgenres or clustering of classes using multidimensional scaling
+- [ ] visualise distance between subgenres or clustering of classes using multidimensional scaling or t-distributed stochastic neighbor embedding
