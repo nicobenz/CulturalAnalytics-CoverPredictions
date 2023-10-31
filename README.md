@@ -25,3 +25,4 @@ tba
 - [ ] repeat
 - [ ] ???
 - [ ] profit
+- [ ] visualise distance between subgenres or clustering of classes using multidimensional scaling
