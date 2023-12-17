@@ -18,6 +18,7 @@ tba
 - [ ] plot distribution of available covers among all (sub)genres
 - [ ] decide on included subgenres based on that distribution (some smaller subgenres might not have enough data)
 - [ ] sample (balanced) dataset with at least 20.000 (?!) covers for earch genre and 2000 (?) for each subgenre
+- [ ] make sure all selected items also have metadata for the other project (using data of the same artists and albums results in optimal comparability)
 ### Processing and analysis
 - [ ] study best practice of preprocessing of visual data
 - [ ] train classifiers
