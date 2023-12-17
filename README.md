@@ -5,6 +5,12 @@ This repo contains the code for my term paper in the module Cultural Analytics o
 
 ## Working title
 tba
+
+## Basic description and research questions
+Most music genres can be divided in multiple subgenres that share different features among each other that make them belong to a common genre. However, these features are very fluid and not easily identified. 
+In my project I want investigate, if machine learning algorithmns are capable of identifying statistical relations between album covers within the same subgenre and within their common genre. 
+To find evidence for it, I will analyse the the confusion matrix of the classification result and argue that in addition to the number of true positives indicating a statistical relationship for a certain subgenre, the false positive rate between subgenres within a genre can be interpreted as genre specific features spaning the whole genre and therefore resulting in higher numbers of false positives within a genre.
+
 ## TODO:
 ### Data collection and preparation
 - [x] get list of all genres and subgenres from MusicBrainz
