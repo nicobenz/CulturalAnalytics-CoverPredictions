@@ -7,10 +7,21 @@ This repo contains the code for my term paper in the module Cultural Analytics o
 tba
 
 ## Basic description and research questions
-Most music genres can be divided in multiple subgenres that share different features among each other that make them belong to a common genre. However, these features are very fluid and not easily identified. 
-In my project I want investigate, if machine learning algorithmns are capable of identifying statistical relations between album covers within the same subgenre and within their common genre. 
-To find evidence for it, I will analyse the the confusion matrix of the classification result and argue that in addition to the number of true positives indicating a statistical relationship for a certain subgenre, the false positive rate between subgenres within a genre can be interpreted as genre specific features spaning the whole genre and therefore resulting in higher numbers of false positives within a genre.
+In my research paper, I aim to explore the classification of musical subgenres through their album covers using machine learning algorithms. 
+Music genres typically encompass various subgenres, each possessing unique yet subtly connected features that tie them to their overarching genre. 
+However, these connecting features are often nuanced and challenging to pinpoint. 
+My study will investigate whether machine learning algorithms can detect statistical patterns in album cover designs, both within individual subgenres and across their broader genre categories. 
+A key method of analysis will be examining the confusion matrix from the classification results. 
+I will argue that a significant number of true positives in the matrix may indicate a statistical relationship within a subgenre. 
+More importantly, the rate of false positives, especially between subgenres of the same genre, could reveal genre-spanning features. 
+For example, I anticipate a higher rate of false positives within subgenres of Metal compared to false positives between a Metal subgenre and a Hip Hop subgenre. 
+This pattern, if observed, could suggest the presence of distinct, genre-specific characteristics in album cover designs.
 
+
+## Possible challenges
+- album covers are extremely diverse and artistic; lots of noise in the data is to be expected
+- rate of false positives might not necessarily be an indicator for features connecting subgenres to a genre; there could be a bias in distribution of other factors between genres like release date or geographical origin
+  
 ## TODO:
 ### Data collection and preparation
 - [x] get list of all genres and subgenres from MusicBrainz
