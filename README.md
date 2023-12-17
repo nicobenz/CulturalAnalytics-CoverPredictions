@@ -30,4 +30,4 @@ tba
 - possible approaches:
   - multidimensional scaling
   - t-distributed stochastic neighbor embedding
-  - network graphs using Three.js (or some other fancy interactive 3D visualization tool)
+  - network graphs using Three.js (or some other fancy interactive 3D visualization framework)
