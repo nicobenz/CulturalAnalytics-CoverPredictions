@@ -10,7 +10,7 @@ In the related repo (linked above) I pursue a similar project on musical metadat
 The results of both project are aimed to be comparable, giving insight on the same research question from two different perspectives. 
 
 ## Working title
-Genre-Defining Features in Album Cover Art: Investigating Common Visual Motifs Across Musical Subgenres with BLIP-2 Captions and Machine Learning Classifiers
+Genre-Defining Features in Album Cover Art: Investigating Common Visual Motifs Across Musical Subgenres Using BLIP-2 Captions and Machine Learning Classifiers
 
 ## Outline and research questions
 In my research paper, I aim to explore the classification of musical subgenres through their album covers using machine learning algorithms. 
