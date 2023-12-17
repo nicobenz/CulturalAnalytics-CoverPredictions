@@ -11,7 +11,7 @@ tba
 - [x] extract information of artists, their releases and their genres
 - [x] get the ids of all releases listed on MusicBrainz
 - [x] use these ids to download all front covers
-  - [x] in 500x500 (crawling currently in progress; finished eta end of December)
+  - [x] in 500x500 (crawling currently in progress; finished eta end of January)
   - [ ] in 1200x1200
 - [ ] map all genres to their respective subgenres
 - [ ] check resolution of all scraped covers and decide on most useful resolution
