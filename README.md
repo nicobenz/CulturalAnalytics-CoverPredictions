@@ -1,7 +1,10 @@
 # CulturalAnalytics-CoverPredictions
 (related repo: [MetadataPrediction](https://github.com/nicobenz/CulturalAnalytics-MetadataPredictions/tree/master))
 ## What to expect in this repo
-This repo contains the code for my term paper in the module Cultural Analytics of the MSc Digital Humanities at Leipzig University. Here I will explore classifier training using album covers or alternatively text descriptions from BLIP for the classification of genres and subgenres in music. For my analysis I use album covers crawled from [MusicBrainz](https://musicbrainz.org) along with their meta data on artists, releases, genres and subgenres.
+This repo contains the code for my term paper in the module Cultural Analytics of the MSc Digital Humanities at Leipzig University. 
+Here I will explore classifier training using album covers or alternatively text descriptions from BLIP for the classification of genres and subgenres in music. 
+For my analysis I use album covers crawled from [MusicBrainz](https://musicbrainz.org) along with their meta data on artists, releases, genres and subgenres. 
+The dataset is currently being crawled and will feature over 1 million album covers for over 200 genres with more than 900 subgenres.
 
 In the related repo (linked above) I pursue a similar project on musical metadata of the album cover data set. 
 The results of both project are aimed to be comparable, giving insight on the same research question from two different perspectives. 
@@ -23,7 +26,8 @@ This pattern, if observed, could suggest the presence of distinct, genre-specifi
 
 ## Possible challenges
 - album covers are extremely diverse and artistic; lots of noise in the data is to be expected
-- rate of false positives might not necessarily be an indicator for features connecting subgenres to a genre; there could be a bias in distribution of other factors between genres like release date or geographical origin
+- data is not evenly distributed across genres and subgenres and careful sampling is needed; maybe sacrifice diversity in favor of consistency and only use the 10 most common genres with their 10 most common subgenres each?
+- rate of false positives might not necessarily be an indicator for features connecting subgenres to a genre; there could be a bias in distribution of other factors between genres like release date or geographical origin that can't be prevented even through careful sampling
   
 ## TODO:
 ### Data collection and preparation
@@ -36,7 +40,7 @@ This pattern, if observed, could suggest the presence of distinct, genre-specifi
 - [ ] map all genres to their respective subgenres
 - [ ] check resolution of all scraped covers and decide on most useful resolution
 - [ ] plot distribution of available covers among all (sub)genres
-- [ ] decide on included subgenres based on that distribution (some smaller subgenres might not have enough data)
+- [ ] decide on included subgenres based on that distribution (most smaller subgenres might not have enough data)
 - [ ] sample (balanced) dataset with at least 20.000 (?!) covers for earch genre and 2000 (?) for each subgenre
 - [ ] make sure all selected items also have metadata for the other project (using data of the same artists and albums results in optimal comparability)
 ### Processing and analysis
