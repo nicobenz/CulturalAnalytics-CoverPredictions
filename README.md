@@ -4,7 +4,7 @@
 This repo contains the code for my term paper in the module Cultural Analytics of the MSc Digital Humanities at Leipzig University. Here I will explore classifier training using album covers or alternatively text descriptions from BLIP for the classification of genres and subgenres in music. For my analysis I use album covers crawled from [MusicBrainz](https://musicbrainz.org) along with their meta data on artists, releases, genres and subgenres.
 
 ## Working title
-Genre-Defining Features in Album Cover Art: Unveiling Common Visual Motifs Across Musical Subgenres with BLIP-2 Captions and Machine Learning Classifiers
+Genre-Defining Features in Album Cover Art: Investigating Common Visual Motifs Across Musical Subgenres with BLIP-2 Captions and Machine Learning Classifiers
 
 ## Basic description and research questions
 In my research paper, I aim to explore the classification of musical subgenres through their album covers using machine learning algorithms. 
