@@ -6,7 +6,7 @@ This repo contains the code for my term paper in the module Cultural Analytics o
 ## Working title
 Genre-Defining Features in Album Cover Art: Investigating Common Visual Motifs Across Musical Subgenres with BLIP-2 Captions and Machine Learning Classifiers
 
-## Basic description and research questions
+## Outline and research questions
 In my research paper, I aim to explore the classification of musical subgenres through their album covers using machine learning algorithms. 
 Music genres typically encompass various subgenres, each possessing unique yet subtly connected features that tie them to their overarching genre. 
 However, these connecting features are often nuanced and challenging to pinpoint. 
