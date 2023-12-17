@@ -26,4 +26,8 @@ tba
 - [ ] repeat
 - [ ] ???
 - [ ] profit
-- [ ] visualise distance between subgenres or clustering of classes using multidimensional scaling or t-distributed stochastic neighbor embedding
+- [ ] visualise distance between subgenres or clustering of classes 
+- possible approaches:
+  - multidimensional scaling
+  - t-distributed stochastic neighbor embedding
+  - network graphs using Three.js (or some other fancy interactive 3D visualization tool)
