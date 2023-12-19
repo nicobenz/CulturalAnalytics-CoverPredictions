@@ -50,6 +50,7 @@ This pattern, if observed, could suggest the presence of distinct, genre-specifi
 - [ ] repeat
 - [ ] ???
 - [ ] profit
+- [ ] perform clustering analysis like k-means (maybe some subgenre might fit more in a different parent genre)
 - [ ] visualise distance between subgenres or clustering of classes 
 - possible approaches:
   - multidimensional scaling
